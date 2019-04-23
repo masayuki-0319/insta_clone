@@ -1,8 +1,10 @@
 <div class="center jumbotron">
   <h1>ログイン前のTOPページ</h1>
   <h2>
-    <p>ログイン</p>
-    <p>Facebookログイン</p>
-    <p>通常新規登録</p>
+    <li class="text-right">
+      <ul><%= link_to "ログイン", new_user_session_path, class: "btn btn-success"  %></ul>
+      <ul><%= link_to "Facebookログイン", "#", class: "btn btn-info" %></ul>
+      <ul><%= link_to "新規登録", new_user_registration_path,class: "btn btn-primary" %></ul>
+    </li>
   </h2>
 </div>
