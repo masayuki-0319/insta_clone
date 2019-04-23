@@ -4,4 +4,8 @@ class User < ApplicationRecord
   # :omniauthable, :omniauth_providers[:facebook]
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
+  before_save { self.email = email.downcase }
+  validates :user_name, presence: true, length: { in: 3..50}
+  validates :pen_name, presence: true, length: { in: 3..50}
+  validates :email, uniqueness: { case_sensitive: false }
 end
