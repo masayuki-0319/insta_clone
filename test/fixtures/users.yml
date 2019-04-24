@@ -3,3 +3,5 @@ aoi:
   pen_name: Yukimura Aoi
   email: yamano@susume.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: Date.today
+  confirmation_sent_at: Date.today
