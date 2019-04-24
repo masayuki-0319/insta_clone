@@ -11,11 +11,11 @@ Rails.application.routes.draw do
 
   devise_for :users, skip: [:registrations, :sessions]
   as :user do
-    get '/signup',  to: 'devise/registrations#new', as: :new_user_registration
-    post'/signup',  to: 'devise/registrations#create', as: :user_registration
-    get 'signin', to: 'devise/sessions#new', as: :new_user_session
-    post 'signin', to: 'devise/sessions#create', as: :user_session
-    match 'signout', to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
+    get 'sign_up',  to: 'devise/registrations#new', as: :new_user_registration
+    post'sign_up',  to: 'devise/registrations#create', as: :user_registration
+    get 'sign_in', to: 'devise/sessions#new', as: :new_user_session
+    post 'sign_in', to: 'devise/sessions#create', as: :user_session
+    match 'sign_out', to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
   end
 
   resources :users, only: [:show]
