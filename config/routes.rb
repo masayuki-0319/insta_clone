@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get '/about',     to: 'static_pages#about'
   get '/tos',       to: 'static_pages#tos'
 
-  #課題：deviseをよりRESTfulにする（path統一）。
+  #課題：deviseをよりRESTfulにする（path）。
   devise_for :users, skip: [:registrations, :sessions]
   as :user do
     get 'sign_up',          to: 'devise/registrations#new', as: :new_user_registration
