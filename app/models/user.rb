@@ -9,4 +9,8 @@ class User < ApplicationRecord
   validates :pen_name, presence: true, length: { in: 3..50}
   validates :email, uniqueness: { case_sensitive: false }
   has_many :photos, dependent: :destroy
+
+  def feed
+    Photo.where("user_id = ?", id)
+  end
 end

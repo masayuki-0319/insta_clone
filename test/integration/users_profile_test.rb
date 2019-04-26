@@ -2,12 +2,14 @@ require 'test_helper'
 
 class UsersProfileTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
+  include Warden::Test::Helpers
 
   def setup
     @user = users(:aoi)
   end
 
   test "profile display" do
+    login_as(@user, scope: :user)
     get user_path(@user)
     assert_template 'users/show'
     assert_select 'title', full_title(@user.user_name)

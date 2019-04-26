@@ -1,6 +1,13 @@
 aoi:
   user_name: Yukimura Aoi
   pen_name: Yukimura Aoi
-  email: yamano@susume.com
+  email: yamano1@susume.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
-  confirmed_at: Time.zone.now
+  confirmed_at: <%= Time.zone.now %>
+
+hinata:
+  user_name: Kuraue Hinata
+  pen_name: Kuraue Hinata
+  email: yamano2@susume.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.zone.now %>
