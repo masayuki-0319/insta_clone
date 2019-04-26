@@ -8,4 +8,5 @@ class User < ApplicationRecord
   validates :user_name, presence: true, length: { in: 3..50}
   validates :pen_name, presence: true, length: { in: 3..50}
   validates :email, uniqueness: { case_sensitive: false }
+  has_many :photos, dependent: :destroy
 end

@@ -1,0 +1,8 @@
+<li id="photo-<%= photo.id %>">
+  <%= link_to gravatar_for(photo.user, size: 50), photo.user %>
+  <span class="picture"><%= link_to photo.picture, photo.user %></span>
+  <span class="title"><%= photo.title %></span>
+  <span class="timestamp">
+    投稿時間 <%= time_ago_in_words(photo.created_at) %> ago.
+  </span>
+</li>

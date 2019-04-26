@@ -9,4 +9,13 @@
       </h1>
     </section>
   </aside>
+  <div class="col-md-8">
+    <% if @user.photos.any? %>
+      <h3>投稿写真(<%= @user.photos.count %>)</h3>
+      <ol class="photos">
+        <%= render @photos %>
+      </ol>
+      <%= will_paginate @photos %>
+    <% end %>
+  </div>
 </div>

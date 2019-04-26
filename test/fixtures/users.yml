@@ -4,4 +4,3 @@ aoi:
   email: yamano@susume.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: Time.zone.now
-  confirmation_sent_at: Time.zone.now

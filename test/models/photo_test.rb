@@ -4,7 +4,7 @@ class PhotoTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:aoi)
-    @photo = Photo.new(picture: "SPicture", title: "STitle", user_id: @user.id)
+    @photo = @user.photos.new(picture: "SPicture", title: "STitle")
   end
 
   test "should be valid" do
@@ -24,5 +24,18 @@ class PhotoTest < ActiveSupport::TestCase
   test "title should be at most 50 characters" do
     @photo.title = "a" * 51
     assert_not @photo.valid?
+  end
+
+  test "order should be most reent first" do
+    assert_equal photos(:most_recent), Photo.first
+  end
+
+  test "associated photos should be destroyed" do
+    assert_difference "Photo.count", 1 do
+      @user.photos.create!(picture: "Delete", title: "Dlete Test")
+    end
+    assert_difference "Photo.count", -@user.photos.count do
+      @user.destroy
+    end
   end
 end
