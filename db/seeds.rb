@@ -18,10 +18,32 @@ User.create!(user_name: "Example User",
                confirmed_at: Time.zone.now)
 end
 
-users = User.order(:created_at).take(6)
-50.times do |n|
-  picture = Faker::Games::Pokemon.name
-  title = "#{picture}title-#{n+1}"
-  users.each { |user| user.photos.create!(picture: picture,
-                                          title: title) }
+# 画像投稿機能確認用
+10.times do |n|
+  picture = open("db/fixtures/img#{n+1}.jpeg")
+  title = "picture-title-#{n+1}"
+  User.first.photos.create!(picture: picture, title: title)
 end
+
+10.times do |n|
+  picture = open("db/fixtures/img#{n+11}.jpeg")
+  title = "picture-title-#{n+1}"
+  User.second.photos.create!(picture: picture, title: title)
+end
+
+
+users = User.order(created_at: "DESC").take(5)
+4.times do |n|
+  picture = open("db/fixtures/img#{n+20}.jpeg")
+  title = "picture-title-#{n+20}"
+  users.each { |user| user.photos.create!(picture: picture, title: title) }
+end
+
+
+#users = User.order(:created_at).take(5)
+#50.times do |n|
+#  picture = Faker::Games::Pokemon.name
+#  title = "#{picture}title-#{n+1}"
+#  users.each { |user| user.photos.create!(picture: picture,
+#                                          title: title) }
+#end

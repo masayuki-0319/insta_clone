@@ -19,7 +19,7 @@ class PhotosInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div#error_explanation'
     # 有効な送信
     title = "Test valid post"
-    picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
+    picture = fixture_file_upload('test/fixtures/files/rails.png', 'image/png')
     assert_difference 'Photo.count', 1 do
       post photos_path, params: { photo: { picture: picture,
                                            title: title } }

@@ -4,7 +4,7 @@ class PhotoTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:aoi)
-    picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
+    picture = fixture_file_upload('test/fixtures/files/rails.png', 'image/png')
     @photo = @user.photos.new(picture: picture, title: "STitle")
   end
 
@@ -28,7 +28,7 @@ class PhotoTest < ActiveSupport::TestCase
 
   test "associated photos should be destroyed" do
     assert_difference "Photo.count", 1 do
-      picture = fixture_file_upload('test/fixtures/rails.png', 'image/png')
+      picture = fixture_file_upload('test/fixtures/files/rails.png', 'image/png')
       @user.photos.create!(picture: picture, title: "Dlete Test")
     end
     assert_difference "Photo.count", -@user.photos.count do
