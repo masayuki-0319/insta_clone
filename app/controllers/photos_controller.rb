@@ -1,6 +1,11 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:show, :create, :destroy]
+  before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
   before_action :correct_user, only: [:destroy]
+
+  #課題：検索機能を実装する
+  def index
+    @feed_items = Photo.all.paginate(page: params[:page])
+  end
 
   def show
     @user = User.find_by(params[:user_id])

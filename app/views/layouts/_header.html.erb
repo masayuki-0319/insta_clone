@@ -4,7 +4,7 @@
       <nav>
         <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to "検索フォーム設置予定", '#' %></li>
+          <li><%= link_to "検索フォーム設置予定", photos_path %></li>
           <li><%= link_to "通知", '#' %></li>
           <li><%= link_to "ユーザー", user_path(current_user) %></li>
           <li class="divider"></li>

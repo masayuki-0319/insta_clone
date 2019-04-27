@@ -23,6 +23,6 @@ Rails.application.routes.draw do
       get :following, :followers
     end
   end
-  resources :photos, only: [:show, :create, :destroy]
+  resources :photos, only: [:index, :show, :create, :destroy]
   resources :user_relationships, only: [:create, :destroy]
 end
