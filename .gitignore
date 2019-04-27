@@ -33,3 +33,5 @@
 
 # Ignore Spring files.
 /spring/*.pid
+
+#課題：db:seedとtestの写真をレビュー用にGitに上げたが大丈夫？ 

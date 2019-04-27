@@ -17,6 +17,12 @@ Rails.application.routes.draw do
     match 'sign_out',       to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
   end
 
-  resources :users, only: [:show]
+
+  resources :users, only: [:show, :following, :followers] do
+    member do
+      get :following, :followers
+    end
+  end
+
   resources :photos, only: [:create, :destroy]
 end
