@@ -1,9 +1,10 @@
 <li id="photo-<%= photo.id %>">
   <%= link_to gravatar_for(photo.user, size: 50), photo.user %>
   <span class="picture">
-    <%= image_tag photo.picture.url if photo.picture? %>>
+    <%= image_tag photo.picture.url if photo.picture? %>
   </span>
-  <span class="title"><%= photo.title %></span>
+  <span class="title"><%= link_to photo.title, photo %></span>
+  <span class="title"><%= link_to photo.user.user_name, user_path(photo.user) %></span>
   <span class="timestamp">
     投稿時間 <%= time_ago_in_words(photo.created_at) %> ago.
     <% if current_user == photo.user %>
