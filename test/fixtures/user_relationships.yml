@@ -1,0 +1,23 @@
+one:
+  follower: aoi
+  followed: hinata
+
+two:
+  follower: aoi
+  followed: kaede
+
+three:
+  follower: aoi
+  followed: kokona
+
+four:
+  follower: hinata
+  followed: aoi
+
+five:
+  follower: kokona
+  followed: aoi
+
+six:
+  follower: kaede
+  followed: aoi

@@ -10,7 +10,6 @@ class PhotosInterfaceTest < ActionDispatch::IntegrationTest
   test "photo interface" do
     login_as(@user, scope: :user)
     get root_path
-    assert_select 'div.pagination'
     assert_select 'input[type = file]'
     # 無効な送信
     assert_no_difference 'Photo.count' do
@@ -24,7 +23,7 @@ class PhotosInterfaceTest < ActionDispatch::IntegrationTest
       post photos_path, params: { photo: { picture: picture,
                                            title: title } }
     end
-    assert_redirected_to root_url
+    assert_redirected_to photo_path(Photo.first.id)
     follow_redirect!
     assert_match title, response.body
     # 投稿を削除する

@@ -11,3 +11,17 @@ hinata:
   email: yamano2@susume.com
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: <%= Time.zone.now %>
+
+kaede:
+  user_name: Saito Kaede
+  pen_name: Saito Kaede
+  email: yamano3@susume.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.zone.now %>
+
+kokona:
+  user_name: Aoba Kokona
+  pen_name: Aoba Kokona
+  email: yamano4@susume.com
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.zone.now %>

@@ -18,8 +18,11 @@ class User < ApplicationRecord
   validates :pen_name, presence: true, length: { in: 3..50}
   validates :email, uniqueness: { case_sensitive: false }
 
+  # フォロー対象のFeedを返す
   def feed
-    Photo.where("user_id = ?", id)
+    following_ids = "SELECT followed_id FROM user_relationships
+                     WHERE follower_id = :user_id"
+    Photo.where("user_id IN (#{following_ids})", user_id: id)
   end
 
   #ユーザーをフォロー

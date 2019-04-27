@@ -1,12 +1,17 @@
 class PhotosController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :destroy]
+  before_action :authenticate_user!, only: [:show, :create, :destroy]
   before_action :correct_user, only: [:destroy]
+
+  def show
+    @user = User.find_by(params[:user_id])
+    @photo = Photo.find(params[:id])
+  end
 
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save
       flash[:success] = "Photo created!"
-      redirect_to root_url
+      redirect_to @photo
     else
       @feed_items = []
       render 'static_pages/home'

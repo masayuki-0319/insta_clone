@@ -8,8 +8,12 @@
         <%= @user.user_name %>
       </h1>
     </section>
+    <section>
+      <%= render 'shared/stats' %>
+    </section>
   </aside>
   <div class="col-md-8">
+    <%= render 'follow_form' if user_signed_in? %>
     <% if @user.photos.any? %>
       <h3>投稿写真(<%= @user.photos.count %>)</h3>
       <ol class="photos">
