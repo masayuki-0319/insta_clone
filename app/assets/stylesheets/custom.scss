@@ -322,3 +322,11 @@ span.picture {
 .btn-secondary {
   @include button-variant($btn-default-color, #BBBBBB, $btn-default-border);
 }
+
+.like-btn {
+  color: #8899a6;
+}
+
+.like-btn-unlike {
+  color: #ff2581;
+}

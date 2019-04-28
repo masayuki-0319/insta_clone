@@ -19,4 +19,11 @@ class UsersController < ApplicationController
     @users = @user.followers.paginate(page: params[:page])
     render 'show_follow'
   end
+
+  def like
+    @title = "Likes"
+    @user = User.find(params[:id])
+    @like_photos = @user.photo_likes.paginate(page: params[:page])
+    render 'show_like'
+  end
 end

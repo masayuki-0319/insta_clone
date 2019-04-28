@@ -1,0 +1,8 @@
+<%#= link_to(photo_like_path(@ohoto), {method: "delete"}) do %>
+
+<%# end %>
+
+<%= link_to "/photo_likes/#{@photo.id}/destroy",
+            {method: "post"}, remote: true do %>
+  <span class="fa fa-heart like-btn-like"></span>
+<% end %>

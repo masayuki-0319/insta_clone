@@ -19,7 +19,7 @@ User.create!(user_name: "Example User",
                confirmed_at: Time.zone.now)
 end
 
-# 画像投稿機能
+# 写真投稿機能
 10.times do |n|
   picture = open("db/fixtures/img#{n+1}.jpeg")
   title = "picture-title-#{n+1}"
@@ -48,9 +48,8 @@ followers = users[3..40]
   followers.each { |follower| follower.follow(User.find(n+1)) }
 end
 
-#user1 = users.first
-#user2 = users.second
-#2.times do |n|
-#  following.each { |followed| "user#{n+1}".follow(followed) }
-#  followers.each { |follower| follower.follow("user#{n+1}") }
-#end
+# 写真いいね！機能
+photos = Photo.all[5..14]
+5.time do |n|
+  photos.each { |photo| User.find(n+10).like(photo) }
+end

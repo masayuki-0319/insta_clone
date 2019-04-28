@@ -1,0 +1,11 @@
+<!--課題０１：デザインが落ち着いたらform_forの実装に再挑戦
+<%#= link_to photo_likes_path(@photo), {method: "post"} do %>
+  <div><%#= hidden_field_tag :photo_id, @photo.id%></div>
+  <span class="fa fa-heart like-btn-unlike"></span>
+<%# end %>
+-->
+
+<%= link_to "/photo_likes/#{@photo.id}/create",
+            {method: "post"}, remote: true do %>
+  <span class="fa fa-heart like-btn-unlike"></span>
+<% end %>

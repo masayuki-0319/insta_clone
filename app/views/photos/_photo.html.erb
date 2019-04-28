@@ -3,7 +3,10 @@
   <span class="picture">
     <%= image_tag photo.picture.url if photo.picture? %>
   </span>
-  <span class="title"><%= link_to photo.title, photo %></span>
+  <span class="title">
+    <%= link_to photo.title, photo %>
+    <%= render 'users/like_form'%>
+  </span>
   <span class="title"><%= link_to photo.user.user_name, user_path(photo.user) %></span>
   <span class="timestamp">
     投稿時間 <%= time_ago_in_words(photo.created_at) %> ago.
