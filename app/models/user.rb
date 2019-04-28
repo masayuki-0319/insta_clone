@@ -5,6 +5,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_many :photos, dependent: :destroy
+  has_many :photo_likes, class_name: "PhotoLike",
+                         foreign_key: "liker_id" ,
+                         dependent: :destroy
   has_many :active_user_relationships, class_name: "UserRelationship",
                                        foreign_key: "follower_id",
                                        dependent: :destroy
@@ -38,5 +41,21 @@ class User < ApplicationRecord
   #現在ユーザーがフォローしている場合，True
   def following?(other_user)
     following.include?(other_user)
+  end
+
+  #写真いいね！
+  def like(photo)
+    photo_likes.create(photo_id: photo.id)
+  end
+
+  #写真いいね！解除
+  def unlike(photo)
+    photo_likes.find_by(photo_id: photo.id).destroy
+  end
+
+  #課題：もっと良い演算子があるか？
+  #いいね！している場合，True
+  def liking?(photo)
+    !photo_likes.find_by(photo_id: photo.id).nil?
   end
 end

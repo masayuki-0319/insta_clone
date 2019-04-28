@@ -25,4 +25,5 @@ Rails.application.routes.draw do
   end
   resources :photos, only: [:index, :show, :create, :destroy]
   resources :user_relationships, only: [:create, :destroy]
+  resources :photo_likes, only: [:create, :destroy]
 end
