@@ -2,7 +2,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :post_photo_prepare, if: :current_user
+  before_action :prepare_photo_search
 
+  def prepare_photo_search
+    @q = Photo.ransack(params[:q])
+  end
 
   private
 

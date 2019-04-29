@@ -17,6 +17,7 @@ gem 'mini_magick'
 gem 'faker'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
+gem 'ransack'
 
 group :development, :test do
   gem 'sqlite3'
