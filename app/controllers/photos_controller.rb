@@ -8,8 +8,8 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @user = User.find_by(params[:user_id])
     @photo = Photo.find(params[:id])
+    @user = User.find(@photo.user_id)
   end
 
   def create

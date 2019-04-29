@@ -1,5 +1,5 @@
 <% unless current_user.id == @photo.user_id %>
-  <div id="like_form">
+  <div class="col-3 col-md-6" id="like_form">
     <% if current_user.liking?(@photo) %>
       <%= render 'users/unlike' %>
     <% else %>
