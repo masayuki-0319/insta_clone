@@ -1,6 +1,6 @@
 <% if @feed_items.any? %>
-  <ol class="photos">
+  <div class="photos">
     <%= render @feed_items %>
-  </ol>
+  </div>
   <%= will_paginate @feed_items %>
 <% end %>

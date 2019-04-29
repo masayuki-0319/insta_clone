@@ -4,7 +4,7 @@
     <title><%= full_title(yield(:title)) %></title>
     <%= render 'layouts/head'%>
   </head>
-  <body>
+  <body class="top-main<%= "-logout" unless user_signed_in? %>">
     <%= render 'layouts/header' %>
     <div class="container">
       <%= render 'layouts/flash_message' %>

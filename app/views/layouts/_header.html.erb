@@ -1,3 +1,4 @@
+<% if user_signed_in? %>
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <%= link_to "InstaClone", root_path , id: "logo" %>
@@ -16,3 +17,4 @@
     </nav>
   </div>
 </header>
+<% end %>

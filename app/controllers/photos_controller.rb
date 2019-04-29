@@ -15,11 +15,12 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save
-      flash[:success] = "Photo created!"
+      flash[:success] = "Posted Photo!"
       redirect_to @photo
     else
+      flash[:danger] = "Failed post Photo."
       @feed_items = []
-      render 'static_pages/home'
+      redirect_to root_path
     end
   end
 

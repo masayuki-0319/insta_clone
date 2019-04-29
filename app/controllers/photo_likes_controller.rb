@@ -15,7 +15,7 @@ class PhotoLikesController < ApplicationController
 #    redirect_to root_path
 #  end
 
-  #課題０１：上記でコード実装が難航したため，実装したlike機能無視，具象化しすぎ
+  #課題０１：上記でコード実装が難航したため，実装したlike機能無視，具象化しすぎ，Ajax未稼働
   def create
     @like = PhotoLike.new(liker_id: @current_user.id, photo_id: params[:id])
     @like.save
