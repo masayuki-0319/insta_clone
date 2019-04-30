@@ -260,7 +260,7 @@ Devise.setup do |config|
   #config.omniauth :facebook, "APP_ID", "APP_SECRET", token_params: { parse: :json }
   #config.omniauth :facebook, "APP_ID", "APP_SECRET", client_options: { ssl: { verify: !Rails.env.development? } }
   require 'omniauth-facebook'
-  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'name'
+  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'public_profile,email'
 
 #  require "omniauth-facebook"
 #  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'],
