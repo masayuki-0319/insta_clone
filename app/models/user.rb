@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :lockable, :timeoutable, :trackable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable,
-         :omniauthable, omniauth_providers: %i[facebook]
+         :omniauthable, omniauth_providers: [:facebook]
   has_many :photos, dependent: :destroy
   has_many :photo_likes, class_name: "PhotoLike",
                          foreign_key: "liker_id" ,
@@ -27,7 +27,7 @@ class User < ApplicationRecord
       user.email = auth.info.email
       user.password = Devise.friendly_token[0, 20]
       user.user_name = auth.info.name
-      user.pen_name = auth.extra.raw.info.user_name
+      user.pen_name = auth.info.name
       user.skip_confirmation!
     end
   end
