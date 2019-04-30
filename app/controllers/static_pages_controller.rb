@@ -1,7 +1,10 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @feed_items = current_user.feed.paginate(page: params[:page]) if current_user
+    if user_signed_in?
+      following_photo = Photo.where("user_id IN (?)", current_user.following_ids)
+      @feed_items = following_photo.paginate(page: params[:page])
+    end
   end
 
   def about

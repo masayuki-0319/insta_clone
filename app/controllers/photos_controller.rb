@@ -2,17 +2,10 @@ class PhotosController < ApplicationController
   before_action :authenticate_user!, only: [:index, :show, :create, :destroy]
   before_action :correct_user, only: [:destroy]
 
-  #課題：検索機能を実装する
   def index
-    #@search_photos = @q.result(distinct: true)
-    result = @q.result(distinct: true).paginate(page: params[:page])
-    @feed_items = result ||= Photo.all.paginate(page: params[:page])
-
-    #予備
-    #元々：@feed_items = Photo.all.paginate(page: params[:page])
-    #@q = Photo.all.ransack(params: [:q])
-    #@result = @q.result(distinct: true).recent
-    #@feed_items = @result.paginate(page: params[:page])
+    search_result = @q.result(distinct: true)
+    show_result = search_result ||= Photo.all
+    @feed_items = show_result.paginate(page: params[:page])
   end
 
   def show
