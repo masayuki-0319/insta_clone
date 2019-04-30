@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/tos',       to: 'static_pages#tos'
 
   #課題：deviseをよりRESTfulにする（path）。
-  devise_for :users, skip: [:registrations, :sessions]
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }, skip: [:registrations, :sessions]
   as :user do
     get 'sign_up',          to: 'devise/registrations#new', as: :new_user_registration
     post'sign_up',          to: 'devise/registrations#create', as: :user_registration
@@ -16,7 +16,6 @@ Rails.application.routes.draw do
     post 'sign_in',         to: 'devise/sessions#create', as: :user_session
     match 'sign_out',       to: 'devise/sessions#destroy', as: :destroy_user_session, via: Devise.mappings[:user].sign_out_via
   end
-
 
   resources :users, only: [:show, :following, :followers] do
     member do

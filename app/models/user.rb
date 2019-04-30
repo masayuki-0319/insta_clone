@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable
-  # :omniauthable, :omniauth_providers[:facebook]
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable,
+         :omniauthable, omniauth_providers: %i[facebook]
   has_many :photos, dependent: :destroy
   has_many :photo_likes, class_name: "PhotoLike",
                          foreign_key: "liker_id" ,
@@ -21,7 +21,18 @@ class User < ApplicationRecord
   validates :pen_name, presence: true, length: { in: 3..50}
   validates :email, uniqueness: { case_sensitive: false }
 
-  # フォロー対象のFeedを返す
+  #omniauth:Facebook認証
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.user_name = auth.info.name
+      user.pen_name = auth.extra.raw.info.user_name
+      user.skip_confirmation!
+    end
+  end
+
+  #フォロー対象のFeedを返す
   def feed
     following_ids = "SELECT followed_id FROM user_relationships
                      WHERE follower_id = :user_id"
