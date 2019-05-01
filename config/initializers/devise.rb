@@ -257,21 +257,11 @@ Devise.setup do |config|
   config.sign_out_via = :delete
 
   # ==> OmniAuth
-  require "omniauth-facebook"
-  config.omniauth :facebook, "APP_ID", "APP_SECRET", token_params: { parse: :json }
+  #config.omniauth :facebook, "APP_ID", "APP_SECRET", token_params: { parse: :json }
   #config.omniauth :facebook, "APP_ID", "APP_SECRET", client_options: { ssl: { verify: !Rails.env.development? } }
-#  require 'omniauth-facebook'
-#  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'], scope: 'public_profile,email'
+  require 'omniauth-facebook'
+  config.omniauth :facebook, "APP_ID", "APP_SECRET", scope: 'email', info_fields: 'email,name'
 
-#  config.omniauth :facebook, ENV['FACEBOOK_KEY'], ENV['FACEBOOK_SECRET'],
-#                  token_params: { parse: :json },
-#                  scope: 'public_profile,email',
-#                  info_fields: 'email, name, user_name',
-#                  client_options: {
-#                      site: 'https://graph.facebook.com/v3.3',
-#                      authorize_url: "https://www.facebook.com/v3.3/dialog/oauth",
-#                      ssl: { verify: !Rails.env.development? }
-#                  }
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'

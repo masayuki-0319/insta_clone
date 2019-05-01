@@ -1,31 +1,73 @@
 <% provide(:title, '編集')%>
 <div class="center jumbotron">
   <h1><%= resource_name.to_s.humanize %>情報編集</h1>
-
-  <div class="row">
+  <aside>
+    <div class="gravatar_edit text-left">
+      <%= gravatar_for @user %>
+      <a href="http://gravatar.com/emails" target="_blank">プロフィール写真を変更する</a>
+    </div>
+  </aside>
+  <div class="row text-left">
     <div class="col-md-6 col-md-offset-3">
       <%= form_for(resource, as: resource_name, url: update_user_registration_path, html: { method: :put }) do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
+        <h4>＜公開情報＞</h4>
 
-        <div class="field">
-          <%= f.label :email, "メールアドレス" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
-        </div>
-
-        <div class="field">
-          <%= f.label :user_name, "フルネーム" %><br />
+        <dev class="field">
+          <%= f.label :user_name, "名前" %>
           <%= f.text_field :user_name, autofocus: true, autocomplete: "name" %>
         </div>
 
         <div class="field">
-          <%= f.label :pen_name, "ユーザーネーム" %><br />
+          <%= f.label :pen_name, "ユーザーネーム" %>
           <%= f.text_field :pen_name, autofocus: true, autocomplete: "name" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :website, "ウェブサイト" %>
+          <%= f.text_field :website %>
+        </div>
+
+        <div class="field">
+          <%= f.label :introduction, "自己紹介" %>
+          <%= f.text_area :introduction %>
+        </div>
+
+        <h4>＜非公開情報＞</h4>
+        <div class="field">
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :tel, "電話番号" %>
+          <%= f.email_field :tel, class: 'form-control' %>
+        </div>
+
+        <div class="field">
+          <%= f.label :sex, "未選択" %>
+          <%= f.radio_button :sex, 0 %>
+          <%= f.label :sex, "男性" %>
+          <%= f.radio_button :sex, 1 %>
+          <%= f.label :sex, "女性" %>
+          <%= f.radio_button :sex, 2 %>
+        </div>
+        <br />
+
+        <div class="field">
+          <%= f.label :current_password, "パスワードを入力してください。" %> <br />
+          <%= f.password_field :current_password, autocomplete: "current-password" %>
+        </div>
+        <div class="actions">
+          <%= f.submit "プロフィール編集完了", class:"btn btn-primary" %>
         </div>
 
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
         <% end %>
+        <br />
 
+        <h4>＜アカウント設定＞</h4>
         <div class="field">
           <%= f.label :password, "新しいパスワード" %> <i>(空欄の場合は，変更しません。)</i><br />
           <%= f.password_field :password, autocomplete: "new-password" %>
@@ -35,26 +77,22 @@
           <%= f.label :password_confirmation, "新しいパスワード再確認" %><br />
           <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
         </div>
+        <br />
 
         <div class="field">
-          <%= f.label :current_password, "現在のパスワード" %> <br />
+          <%= f.label :current_password, "現在のパスワードを入力してください。" %> <br />
           <%= f.password_field :current_password, autocomplete: "current-password" %>
         </div>
 
         <div class="actions">
-          <%= f.submit "編集完了", class:"btn btn-primary" %>
+          <%= f.submit "パスワード編集完了", class:"btn btn-primary" %>
         </div>
       <% end %>
       <br/>
-      <p>
-        アカウント削除
-        <%= button_to "削除", update_user_registration_path,
+
+       <h4>＜アカウント削除＞</h4>
+        <%= button_to "アカウントを削除する", update_user_registration_path,
         class:"btn btn-danger", data: { confirm: "本当に削除しますか？" }, method: :delete %>
-      </p>
-      <div class="gravatar_edit">
-        <%= gravatar_for @user %>
-        <a href="http://gravatar.com/emails" target="_blank">プロフィール写真を変更する</a>
-      </div>
     </div>
   </div>
 </div>

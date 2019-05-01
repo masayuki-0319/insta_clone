@@ -1,15 +1,15 @@
 <% if controller.controller_name == "photos" %>
-<div>
-  <h2 class="text-left">
-    <% unless params[:q][:title_cont].empty? %>
-      <li>検索結果「<%= @feed_items.count %>件」</li>
-      <li>検索文字「<%= params[:q][:title_cont] %>」</li>
-    <% else %>
-      <li>表示件数「<%= @feed_items.count %>件」</li>
-      <br>
-    <% end %>
-  </h2>
-</div>
+  <div>
+    <h2 class="text-left">
+      <% unless params[:q][:title_cont].empty? %>
+        <li>検索結果「<%= @feed_items.count %>件」</li>
+        <li>検索文字「<%= params[:q][:title_cont] %>」</li>
+      <% else %>
+        <li>表示件数「<%= @feed_items.count %>件」</li>
+        <br>
+      <% end %>
+    </h2>
+  </div>
 <% end %>
 <div class="photos">
   <%= render @feed_items %>

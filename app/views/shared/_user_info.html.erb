@@ -12,7 +12,10 @@
       <% else %>
           <%= render 'users/follow_form' %>
       <% end %>
-      <h3>投稿写真(<%= @user.photos.count %>枚)</h3>
+      <h3>投稿写真：<%= @user.photos.count %>枚</h3>
+      <h3>ユーザーネーム：<%= @user.user_name %></h3>
+      <h3>自己紹介：<%= @user.introduction %></h3>
+      <h3>Webサイト：<%= @user.website %></h3>
       <%= render 'shared/stats' %>
     </div>
   </section>
