@@ -19,22 +19,23 @@ User.create!(user_name: "Example User",
                confirmed_at: Time.zone.now)
 end
 
+#picture = MiniMagick::Image.read(open(URI.encode("db/fixtures/img#{n+20}.jpeg"), &:read))
 # 写真投稿機能
 10.times do |n|
-  picture = open("db/fixtures/img#{n+1}.jpeg")
+  picture = MiniMagick::Image.open("db/fixtures/img#{n+1}.jpeg")
   title = "picture-title-#{n+1}"
   User.first.photos.create!(picture: picture, title: title)
 end
 
 10.times do |n|
-  picture = open("db/fixtures/img#{n+11}.jpeg")
-  title = "picture-title-#{n+1}"
+  picture = MiniMagick::Image.open("db/fixtures/img#{n+11}.jpeg")
+  title = "picture-title-#{n+11}"
   User.second.photos.create!(picture: picture, title: title)
 end
 
 users = User.order(created_at: "DESC").take(5)
 4.times do |n|
-  picture = open("db/fixtures/img#{n+20}.jpeg")
+  picture = MiniMagick::Image.open("db/fixtures/img#{n+20}.jpeg")
   title = "picture-title-#{n+20}"
   users.each { |user| user.photos.create!(picture: picture, title: title) }
 end
@@ -50,6 +51,6 @@ end
 
 # 写真いいね！機能
 photos = Photo.all[5..14]
-5.time do |n|
+5.times do |n|
   photos.each { |photo| User.find(n+10).like(photo) }
 end

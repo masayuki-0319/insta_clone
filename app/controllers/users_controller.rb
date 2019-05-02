@@ -23,8 +23,7 @@ class UsersController < ApplicationController
   def like
     @title = "Likes"
     @user = User.find(params[:id])
-    photos = Photo.find(@user.photo_likes.ids)
-    @like_photos = photos
+    @like_photos = Photo.where(id: @user.photo_likes.map { |p| p.photo_id })
     render 'show_like'
   end
 end
