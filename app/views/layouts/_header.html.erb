@@ -1,25 +1,25 @@
 <% if user_signed_in? %>
-<header class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <%= link_to "InstaClone", root_path , id: "logo" %>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <%= link_to "InstaClone", root_path , id: "logo" %>
       <nav>
         <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li class="col-8">
-            <%= search_form_for @q do |f| %>
-              <%= f.search_field :title_cont %>
-              <%= f.submit "検索", class:"btn-xs btn-primary" %>
-            <% end %>
-          </li>
-          <li><%= link_to "通知", '#' %></li>
-          <li><%= link_to "ユーザー", user_path(current_user) %></li>
-          <li class="divider"></li>
-          <li>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          </li>
-        <% end %>
-      </ul>
-    </nav>
-  </div>
-</header>
+          <% if user_signed_in? %>
+            <li class="col-8">
+              <%= search_form_for @q do |f| %>
+                <%= f.search_field :title_cont %>
+                <%= f.submit "検索", class:"btn-xs btn-primary" %>
+              <% end %>
+            </li>
+            <li><%= link_to "通知", '#' %></li>
+            <li><%= link_to "ユーザー", user_path(current_user) %></li>
+            <li class="divider"></li>
+            <li>
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>
+  </header>
 <% end %>

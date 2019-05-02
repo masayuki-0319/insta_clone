@@ -1,24 +1,5 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#・学んだ点，苦労した点
+・英語が非常に苦手であるので，DeviseのREADMEやOmniAuth:Overviewを解読するのに骨が折れましたが，有用な情報の多くが英語であることを理解したため，英語の勉強と向き合う決心ができました。
+・検索機能の実装において，異なるページに検索結果を表示するコードを書くことにより，Paramsの扱い方とMVCの感覚を身につけました。
+・PhotoLikeモデルで，「いいね！」したコレクションを一覧表示するため，photo_idの取り出しに苦労しましたが，mapメソッドでphoto_idのコレクションを手に入れた時，少しだけRubyの世界が広がったように感じ，また，Rubyも深く学ぶことの重要性を理解しました。
+・結果的にRailsチュートリアルを３周して，コードに対する読解力をある程度身に付けたつもりでサブ課題に臨みましたが，deviseのソースコードが意味不明で読み解けず，Rubyの奥深さを実感しました。
