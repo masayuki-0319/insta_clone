@@ -8,6 +8,10 @@ class User < ApplicationRecord
   has_many :photo_likes, class_name: "PhotoLike",
                          foreign_key: "liker_id" ,
                          dependent: :destroy
+  has_many :photo_comments, class_name: "PhotoComment",
+                            foreign_key: "commenter_id" ,
+                            dependent: :destroy
+
   has_many :active_user_relationships, class_name: "UserRelationship",
                                        foreign_key: "follower_id",
                                        dependent: :destroy
@@ -16,6 +20,7 @@ class User < ApplicationRecord
                                         foreign_key: "followed_id",
                                         dependent: :destroy
   has_many :followers, through: :passive_user_relationships, source: :follower
+
   before_save { self.email = email.downcase }
   validates :user_name, presence: true, length: { in: 3..50}
   validates :pen_name, presence: true, length: { in: 3..50}

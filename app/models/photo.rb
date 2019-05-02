@@ -1,6 +1,7 @@
 class Photo < ApplicationRecord
   belongs_to :user
   has_many :photo_likes, dependent: :destroy
+  has_many :photo_comments, dependent: :destroy
   has_many :users, through: :photo_likes
   default_scope -> { order(created_at: :desc) }
   mount_uploader :picture, PictureUploader
