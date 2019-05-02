@@ -69,7 +69,6 @@ class User < ApplicationRecord
     photo_likes.find_by(photo_id: photo.id).destroy
   end
 
-  #課題：もっと良い演算子があるか？
   #いいね！している場合，True
   def liking?(photo)
     !photo_likes.find_by(photo_id: photo.id).nil?

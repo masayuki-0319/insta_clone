@@ -10,9 +10,6 @@ class Photo < ApplicationRecord
   validates :picture, presence: true
   validate  :picture_size
 
-
-  #課題：もっと良い演算子があるか？
-  #いいね！されている場合，True
   def liking?(liker)
     !photo_likes.find_by(liker_id: liker.id).nil?
   end
