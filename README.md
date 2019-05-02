@@ -6,18 +6,18 @@
 
 # ＜今後の課題（自分用）＞
 * ・全体的なデザイン
-　　→Bootstrapでレスポンシブへ
+*　　→Bootstrapでレスポンシブへ
 * ・通知機能
 * ・写真のモーダル表示
-　　→コメント投稿，一覧表示
+*　　→コメント投稿，一覧表示
 * ・PhotoLike機能
-　　→LikeとUnlikeのコードをリファクタリング
-　　→Ajax実装
-　　→いいね！機能をphoto#show以外で実装
+*　　→LikeとUnlikeのコードをリファクタリング
+*　　→Ajax実装
+*　　→いいね！機能をphoto#show以外で実装
 * ・Facebookログイン
-　　→パス不明によるUser情報の編集不可を解消
-　　→クリックで強制ログイン状態を修正
+*　　→パス不明によるUser情報の編集不可を解消
+*　　→クリックで強制ログイン状態を修正
 * ・パスワード変更ページを個別作成
 * ・テスト
-　　→PhotoLike，PhotoCommentでテスト未実施
-　　→RSpecで置換
+*　　→PhotoLike，PhotoCommentでテスト未実施
+*　　→RSpecで置換
