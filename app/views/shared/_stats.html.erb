@@ -16,6 +16,12 @@
     <strong id="like" class="stat">
       <%= @user.photo_likes.count %>
     </strong>
-    いいね！
+    いいね！回数
+  </a>
+  <a href="#">
+    <strong id="like" class="stat">
+      <%= PhotoLike.where(photo_id: @user.photos.ids).count %>
+    </strong>
+    いいね！された回数
   </a>
 </div>

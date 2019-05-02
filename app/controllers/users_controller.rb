@@ -23,7 +23,8 @@ class UsersController < ApplicationController
   def like
     @title = "Likes"
     @user = User.find(params[:id])
-    @like_photos = @user.photo_likes.paginate(page: params[:page])
+    photos = Photo.find(@user.photo_likes.ids)
+    @like_photos = photos
     render 'show_like'
   end
 end

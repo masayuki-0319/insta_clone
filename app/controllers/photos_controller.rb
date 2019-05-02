@@ -28,7 +28,7 @@ class PhotosController < ApplicationController
   def destroy
     @photo.destroy
     flash[:success] = "Photo deleted"
-    redirect_to request.referrer || root_url
+    redirect_to current_user
   end
 
   private

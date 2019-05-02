@@ -15,7 +15,7 @@
     <h3><%= @title %></h3>
     <% if @like_photos.any? %>
       <ul class="users follow">
-        <%#= render @like_photos %>
+        <%= render @like_photos %>
       </ul>
       <%#= will_paginate %>
     <% end %>
