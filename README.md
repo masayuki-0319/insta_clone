@@ -1,9 +1,9 @@
 # ＜実装機能＞
-- [devise]Gem使用による登録機能全般
-- [omniauth-facebook]Gem使用によるFacebookログイン
+- ユーザーCRUD（devise使用）
+- ソーシャルログイン（Facebook）
 - ユーザフォロー機能（ボタンにAjax使用）
-- [carrierwave]Gem使用による写真投稿機能
-- [mini_magick]Gem使用による投稿時のサイズ成型機能
+- 写真投稿機能（carrierwave使用）
+- 写真投稿時のサイズ成型機能（mini_magick使用）
 - 写真へのコメント機能
 - 写真へのお気に入り機能（いいね！）
-- [Ransac]Gem使用による写真検索機能
+- 写真検索機能（ransack使用）
